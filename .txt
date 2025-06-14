@@ -1,0 +1,42 @@
+def ask_question(question, options, correct_option):
+    print("\n" + question)
+    for i, option in enumerate(options, start=1):
+        print(f"{i}. {option}")
+    answer = input("Your answer (1-4): ")
+
+    if answer.isdigit() and int(answer) == correct_option:
+        print("Correct!")
+        return 1
+    else:
+        print(f"Wrong! The correct answer is: {options[correct_option - 1]}")
+        return 0
+
+def main():
+    score = 0
+    questions = [
+        {
+            "question": "What is the capital of France?",
+            "options": ["Berlin", "Madrid", "Paris", "Rome"],
+            "answer": 3
+        },
+        {
+            "question": "Which planet is known as the Red Planet?",
+            "options": ["Earth", "Venus", "Mars", "Jupiter"],
+            "answer": 3
+        },
+        {
+            "question": "What is the smallest prime number?",
+            "options": ["0", "1", "2", "3"],
+            "answer": 3
+        }
+    ]
+
+    print("Welcome to the Quiz Game!")
+
+    for q in questions:
+        score += ask_question(q["question"], q["options"], q["answer"])
+
+    print(f"\nYour final score is {score} out of {len(questions)}.")
+
+if __name__ == "__main__":
+    main()
